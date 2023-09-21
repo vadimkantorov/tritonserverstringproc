@@ -1,4 +1,4 @@
-##  Primer of a string proceessing pipeline on Triton-Inference-Server on a CPU-only Docker-less system
+##  Primer of a string processing pipeline on Triton Inference Server on a CPU-only Docker-less system
 
 Here we have a few example Python models accepting a batch of JSON objects and returning a batch of JSON objects. These models are connected in a pipeline.
 
