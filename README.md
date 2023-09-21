@@ -2,7 +2,7 @@
 
 Here we have a few example Python models accepting a batch of JSON objects and returning a batch of JSON objects. These models are connected in a pipeline.
 
-## Installation of `triton-inference-server` from source
+## Installation of https://github.com/triton-inference-server/server from source
 If you can't use the provided Docker images, please compile `tritonserver` binary with Python backend from source. See [buildtritoninferenceserver.yml](./.github/workflows/buildtritoninferenceserver.yml) for steps or use the GitHub Action / uploaded artifacts (for Ubuntu 22.04).
 
 ```shell
