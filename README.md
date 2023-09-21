@@ -2,8 +2,7 @@
 
 Here we have a few example Python models accepting a batch of JSON objects and returning a batch of JSON objects. These models are connected in a sequential **"ensemble"** pipeline (in Triton Inference Server lingo).
 
-## Installation of https://github.com/triton-inference-server/server from source
-If you can't use the provided Docker images, please compile `tritonserver` binary with Python backend from source. See [buildtritoninferenceserver.yml](./.github/workflows/buildtritoninferenceserver.yml) for steps or use the GitHub Action / uploaded artifacts (for Ubuntu 22.04).
+If you can't use the provided Docker images of `trintonserver`, please compile the `tritonserver` binary with Python backend [from source](https://github.com/triton-inference-server/server/blob/main/docs/customization_guide/build.md#cpu-only-build). See [buildtritoninferenceserver.yml](./.github/workflows/buildtritoninferenceserver.yml) for steps or use the GitHub Action / uploaded artifacts (for Ubuntu 22.04).
 
 ```shell
 #place tritonserver into /opt/tritonserver
@@ -46,5 +45,4 @@ python3 client.py pipeline hello3
 - https://github.com/triton-inference-server/python_backend
 - https://github.com/triton-inference-server/python_backend/tree/main/examples/preprocessing
 - https://github.com/triton-inference-server/python_backend/tree/main/examples/auto_complete
-- https://github.com/triton-inference-server/server/blob/main/docs/customization_guide/build.md#cpu-only-build
 - https://blog.ml6.eu/triton-ensemble-model-for-deploying-transformers-into-production-c0f727c012e3
