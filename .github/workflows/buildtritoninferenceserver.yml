@@ -1,0 +1,19 @@
+jobs:
+
+  buildtritoninferenceserver:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Install Prerequisites
+        run:  sudo add-apt-repository ppa:mhier/libboost-latest && sudo apt-get update && apt-get install -y git build-essential rapidjson-dev libssl-dev libre2-dev libb64-dev libarchive-dev libboost1.81-dev
+
+      - name: Clone Triton
+        run: git clone https://github.com/triton-inference-server/server --branch r23.08 --single-branch --depth 1
+
+      - name: Build Triton
+        run: cd server && python ./build.py -v --no-container-build --enable-logging --enable-stats --enable-tracing --build-dir="$PWD/build" --backend python  --extra-core-cmake-arg=TRITON_ENABLE_GRPC=OFF --extra-core-cmake-arg=TRITON_ENABLE_HTTP=ON  --extra-core-cmake-arg=TRITON_ENABLE_ENSEMBLE=ON
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: tritoninferenceserver
+          path: build/opt/tritonserver/
