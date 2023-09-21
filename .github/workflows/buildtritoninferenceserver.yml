@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Install Prerequisites
-        run:  sudo add-apt-repository ppa:mhier/libboost-latest && sudo apt-get update && apt-get install -y git build-essential rapidjson-dev libssl-dev libre2-dev libb64-dev libarchive-dev libboost1.81-dev
+        run:  sudo add-apt-repository ppa:mhier/libboost-latest && sudo apt-get update && sudo apt-get install -y git build-essential rapidjson-dev libssl-dev libre2-dev libb64-dev libarchive-dev libboost1.81-dev
 
       - name: Clone Triton
         run: git clone https://github.com/triton-inference-server/server --branch r23.08 --single-branch --depth 1
