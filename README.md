@@ -1,3 +1,5 @@
+**UPD**: Triton Inference Server's "Generate" extension might be a better choice for string processing endpoints: https://github.com/triton-inference-server/server/blob/main/docs/protocol/extension_generate.md
+
 ##  Primer of a string processing pipeline on Triton Inference Server on a CPU-only Docker-less system
 
 Here we have a few example Python models accepting a batch of JSON objects and returning a batch of JSON objects. These models are connected in a sequential **"ensemble"** pipeline (in Triton Inference Server lingo).
