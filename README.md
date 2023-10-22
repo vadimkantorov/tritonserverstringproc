@@ -1,4 +1,6 @@
-**UPD**: Triton Inference Server's "Generate" extension might be a better choice for string processing endpoints: https://github.com/triton-inference-server/server/blob/main/docs/protocol/extension_generate.md
+**UPD**: Triton Inference Server's "Generate" extension might be a better choice for string processing endpoints:
+- https://github.com/triton-inference-server/server/blob/main/docs/protocol/extension_generate.md
+- https://github.com/triton-inference-server/server/pull/6412
 
 ##  Primer of a string processing pipeline on Triton Inference Server on a CPU-only Docker-less system
 
@@ -45,6 +47,7 @@ python3 client.py pipeline hello3
 
 ## References
 - https://github.com/triton-inference-server/server/blob/main/docs/protocol/extension_generate.md
+- https://github.com/triton-inference-server/server/pull/6412
 - https://github.com/triton-inference-server/python_backend
 - https://github.com/triton-inference-server/python_backend/tree/main/examples/preprocessing
 - https://github.com/triton-inference-server/python_backend/tree/main/examples/auto_complete
