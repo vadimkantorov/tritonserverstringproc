@@ -42,6 +42,7 @@ python3 client.py pipeline hello3
 ```
 
 ## References
+- https://github.com/triton-inference-server/server/blob/main/docs/protocol/extension_generate.md
 - https://github.com/triton-inference-server/python_backend
 - https://github.com/triton-inference-server/python_backend/tree/main/examples/preprocessing
 - https://github.com/triton-inference-server/python_backend/tree/main/examples/auto_complete
