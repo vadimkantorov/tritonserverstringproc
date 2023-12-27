@@ -12,9 +12,13 @@ Here we have a few example Python models accepting a batch of JSON objects and r
 If you can't use the provided Docker images of `trintonserver`, please compile the `tritonserver` binary with Python backend [from source](https://github.com/triton-inference-server/server/blob/main/docs/customization_guide/build.md#cpu-only-build). See [buildtritoninferenceserver.yml](./.github/workflows/buildtritoninferenceserver.yml) for steps or use the GitHub Action / uploaded artifacts (for Ubuntu 22.04).
 
 ```shell
-#place tritonserver into /opt/tritonserver
-#sudo mkdir -p /opt/ && sudo ln -s "$PWD/build/install/tritonserver" /opt
+#link ./tritonserver/ to /opt/tritonserver/
+#e.g. download opt.zip from GitHub Actions build artifacts
+#unzip opt.zip
+#chmod +x ./tritonserver/bin/tritonserver
+#sudo mkdir -p /opt/ && sudo ln -s "$PWD/tritonserver" /opt/tritonserver
 #export PATH="/opt/tritonserver/bin/:$PATH"
+#sudo add-apt-repository -y ppa:mhier/libboost-latest && apt install libboost-filesystem1.81-dev # maybe could link it statically at build time
 
 tritonserver --model-repository "$PWD/models" --log-verbose=1
 
