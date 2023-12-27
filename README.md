@@ -13,13 +13,12 @@ Here we have a few example Python models accepting a batch of JSON objects and r
 If you can't use the provided Docker images of `trintonserver`, please compile the `tritonserver` binary with Python backend [from source](https://github.com/triton-inference-server/server/blob/main/docs/customization_guide/build.md#cpu-only-build). See [buildtritoninferenceserver.yml](./.github/workflows/buildtritoninferenceserver.yml) for steps or use the GitHub Action / uploaded artifacts (for Ubuntu 22.04).
 
 ```shell
-#link ./tritonserver/ to /opt/tritonserver/
-#e.g. download opt.zip from GitHub Actions build artifacts
+#e.g. download opt.zip from GitHub Actions build artifacts and link ./tritonserver/ to /opt/tritonserver/
+#sudo add-apt-repository -y ppa:mhier/libboost-latest && apt install libboost-filesystem1.81-dev # if not tritonserver not built statically with libboost_filesystem.a
 #unzip opt.zip
 #chmod +x ./tritonserver/bin/tritonserver
 #sudo mkdir -p /opt/ && sudo ln -s "$PWD/tritonserver" /opt/tritonserver
 #export PATH="/opt/tritonserver/bin/:$PATH"
-#sudo add-apt-repository -y ppa:mhier/libboost-latest && apt install libboost-filesystem1.81-dev # maybe could link it statically at build time
 
 tritonserver --model-repository "$PWD/models" --log-verbose=1
 
@@ -33,13 +32,11 @@ curl -i -X POST localhost:8000/v2/models/modelC/generate -d '{"text_input": "Hel
 #Transfer-Encoding: chunked
 #{"model_name":"modelC","model_version":"1","text_output":"modelC: Hello World"}
 
-# try modelC
 curl -i -X POST localhost:8000/v2/models/modelC/infer --header 'Content-Type: application/json' --data-raw '{"inputs":[ { "name": "text_input", "shape": [1], "datatype": "BYTES", "data":  ["Hello"]  }  ] }'
 #HTTP/1.1 200 OK
 #Content-Type: application/json
 #Content-Length: 140
 #{"model_name":"modelC","model_version":"1","outputs":[{"name":"text_output","datatype":"BYTES","shape":[1],"data":["modelC: Hello World"]}]}
-
 
 curl -i -X POST localhost:8000/v2/models/modelA/infer -H 'Inference-Header-Content-Length: 140' -H "Content-Type: application/octet-stream" --data-binary '{"inputs":[{"name":"INPUT0","shape":[15],"datatype":"UINT8","parameters":{"binary_data_size":15}}],"parameters":{"binary_data_output":true}}{"hi": "hello"}'
 # HTTP/1.1 200 OK
