@@ -21,7 +21,7 @@ class TritonPythonModel:
             assert 1 == len(in_numpy), 'in this demo, only supporting a single string per inference request'
             assert bytes == type(in_numpy.tolist()[0]), 'this object encapsulates a byte-array'
             str1 = in_numpy.tolist()[0].decode('utf-8')
-            str2 = self.model_name + str1 + ' World'
+            str2 = self.model_name + ': ' + str1 + ' World'
 
             out_numpy = np.array([str2.encode('utf-8')], dtype = np.object_)
             out_pb = pb_utils.Tensor("text_output", out_numpy)
