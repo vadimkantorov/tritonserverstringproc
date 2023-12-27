@@ -26,6 +26,13 @@ tritonserver --model-repository "$PWD/models" --log-verbose=1
 curl -i http://localhost:8000/v2/health/ready
 # HTTP/1.1 200 OK
 
+curl -i -X POST localhost:8000/v2/models/modelC/generate -d '{"text_input": "Hello"}'
+#HTTP/1.1 200 OK
+#Content-Type: application/json
+#Content-Type: application/json
+#Transfer-Encoding: chunked
+#{"model_name":"modelC","model_version":"1","text_output":"modelC: Hello World"}
+
 # try modelC
 curl -i -X POST localhost:8000/v2/models/modelC/infer --header 'Content-Type: application/json' --data-raw '{"inputs":[ { "name": "text_input", "shape": [1], "datatype": "BYTES", "data":  ["Hello"]  }  ] }'
 #HTTP/1.1 200 OK
@@ -33,12 +40,6 @@ curl -i -X POST localhost:8000/v2/models/modelC/infer --header 'Content-Type: ap
 #Content-Length: 140
 #{"model_name":"modelC","model_version":"1","outputs":[{"name":"text_output","datatype":"BYTES","shape":[1],"data":["modelC: Hello World"]}]}
 
-curl -i -X POST localhost:8000/v2/models/modelC/generate -d '{"text_input": "Hello"}'
-#HTTP/1.1 200 OK
-#Content-Type: application/json
-#Content-Type: application/json
-#Transfer-Encoding: chunked
-#{"model_name":"modelC","model_version":"1","text_output":"modelC: Hello World"}
 
 curl -i -X POST localhost:8000/v2/models/modelA/infer -H 'Inference-Header-Content-Length: 140' -H "Content-Type: application/octet-stream" --data-binary '{"inputs":[{"name":"INPUT0","shape":[15],"datatype":"UINT8","parameters":{"binary_data_size":15}}],"parameters":{"binary_data_output":true}}{"hi": "hello"}'
 # HTTP/1.1 200 OK
