@@ -19,7 +19,7 @@ If you can't use the provided Docker images of `trintonserver`, please compile t
 #e.g. download opt.zip from GitHub Actions build artifacts and link ./tritonserver/ to /opt/tritonserver/
 #sudo add-apt-repository -y ppa:mhier/libboost-latest && apt install libboost-filesystem1.81-dev # if not tritonserver not built statically with libboost_filesystem.a
 #unzip opt.zip
-#chmod +x ./tritonserver/bin/tritonserver
+#chmod +x "$PWD/tritonserver/bin/tritonserver"
 #sudo mkdir -p /opt/ && sudo ln -s "$PWD/tritonserver" /opt/tritonserver
 #export PATH="/opt/tritonserver/bin/:$PATH"
 
