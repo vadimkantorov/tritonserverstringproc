@@ -1,5 +1,6 @@
 > [!NOTE]
 > Triton Inference Server's "Generate" extension might be a better choice for string processing endpoints:
+> - https://github.com/triton-inference-server/server/issues/6337
 > - https://github.com/triton-inference-server/server/pull/6412
 > - https://github.com/triton-inference-server/server/issues/6745
 > - https://github.com/triton-inference-server/server/blob/main/docs/protocol/extension_generate.md
