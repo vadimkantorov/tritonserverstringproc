@@ -2,6 +2,8 @@
 > Triton Inference Server's "Generate" extension might be a better choice for string processing endpoints:
 > - https://github.com/triton-inference-server/server/blob/main/docs/protocol/extension_generate.md
 > - https://github.com/triton-inference-server/server/pull/6412
+> - https://blog.marvik.ai/2023/10/16/deploying-llama2-with-nvidia-triton-inference-server/
+> - https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_generate.html
 
 ##  Primer of a string processing pipeline on Triton Inference Server on a CPU-only Docker-less system
 
