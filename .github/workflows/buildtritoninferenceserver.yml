@@ -8,14 +8,9 @@ jobs:
     steps:
       - name: Install Prerequisites
         run:  sudo add-apt-repository -y ppa:mhier/libboost-latest && sudo apt-get update && sudo apt-get install -y git build-essential rapidjson-dev libssl-dev libre2-dev libb64-dev libarchive-dev libnuma-dev libboost1.81-dev
-        #run:  sudo add-apt-repository -y ppa:mhier/libboost-latest && sudo apt-get update && sudo apt-get install -y git build-essential rapidjson-dev libssl-dev libre2-dev libb64-dev libarchive-dev libnuma-dev libboost1.81-dev libboost-filesystem1.81-dev
-
-#      - name: Keep only static libboost_filesystem.a
-#        run:  sudo rm /lib/*/libboost_filesystem.so* && ls /lib/*/libboost_filesystem*
-
+        
       - name: Clone Triton
         run: git clone https://github.com/triton-inference-server/server --branch r24.05 --single-branch --depth 1
-        #run: git clone https://github.com/triton-inference-server/server --branch r23.12 --single-branch --depth 1
 
       - name: Build Triton
         run: cd server && python ./build.py -v --no-container-build --enable-logging --enable-stats --enable-tracing --build-dir="$PWD/build" --backend python --backend=ensemble --extra-core-cmake-arg=TRITON_ENABLE_GRPC=OFF --extra-core-cmake-arg=TRITON_ENABLE_HTTP=ON  --extra-core-cmake-arg=TRITON_ENABLE_ENSEMBLE=ON
